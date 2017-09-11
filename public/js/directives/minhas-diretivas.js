@@ -1,21 +1,5 @@
 angular.module('minhasDiretivas', [])
-	.directive('meuPainel', function() {
-
-		var ddo = {};
-
-		ddo.restrict = "AE";
-        ddo.transclude = true;
-
-
-		ddo.scope = {
-            nome: '@'
-        };
-
-        ddo.templateUrl = 'js/directives/meu-painel.html';
-
-		return ddo;
-	})
-    .directive('meuProduto', function() {
+	.directive('meuProduto', function() {
 
         var ddo = {};
 
@@ -30,7 +14,7 @@ angular.module('minhasDiretivas', [])
         
         return ddo;
     })
-    .directive('meuBotaoPerigo', function() {
+    .directive('meuBotaoRemover', function() {
         var ddo = {};
         ddo.restrict = "E";
         ddo.scope = {
@@ -67,12 +51,12 @@ angular.module('minhasDiretivas', [])
     .directive('meuCarrinho', function() {
         var ddo = {};
         ddo.restrict = 'E';
-        ddo.template = '<ul><li>{{quantidade}}</li></ul>';
+        ddo.template  = '<li><a href="/produtos/carrinho" rel="nofollow">Carrinho ({{quantidade}}) - R$ {{total}}</a></li>'
         ddo.controller = function($scope, recursoCarrinho) {
-            recursoCarrinho.query(function(produtos) {
-                $scope.quantidades = produtos.map(function(produto) {
-                    return produto.quantidade;
-                });    
+            recursoCarrinho.get(
+                function(produtos) {
+                    $scope.quantidade = produtos.quantidade;
+                    $scope.total = produtos.total;
             });
         };
         return ddo;

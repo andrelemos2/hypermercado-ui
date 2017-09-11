@@ -1,10 +1,10 @@
-angular.module('hypermercado', ['minhasDiretivas','ngAnimate', 'ngRoute', 'ngResource', 'meusServicos', 'carrinhoServicos'])
+angular.module('hypermercado', ['minhasDiretivas','ngAnimate', 'ngRoute', 'ngResource', 'produtoServicos', 'carrinhoServicos'])
 .config(function($routeProvider, $locationProvider) {
 
 	$locationProvider.html5Mode(true);
 
 	$routeProvider.when('/produtos', {
-		templateUrl: 'partials/principal.html',
+		templateUrl: 'partials/produtos.html',
 		controller: 'ProdutosController'
 	});
 

@@ -3,17 +3,12 @@
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
 			aria-controls="navbar">
-			<span class="sr-only">Toggle navigation</span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="#">Hypermercado UI</a>
+		<a class="navbar-brand" href="#">Hypermercado</a>
 	</div>
 	<div id="navbar" class="navbar-collapse collapse">
 		<ul class="nav navbar-nav navbar-right">
-				<!-- <meu-carrinho></meu-carrinho> -->
-			<li><a href="/produtos/carrinho" rel="nofollow">Carrinho {{carrinho.quantidade}} </a></li>
+			<meu-carrinho></meu-carrinho>
 		</ul>
 	</div>
 </div>
@@ -23,22 +18,20 @@
 	{{mensagem}}
 </p>
 
-<div class="row">
+<div class="row marketing">
 	<div class="col-md-12">
 		<form>
 			<div class="input-group">
 				<span class="input-group-btn">
 					<a href="/produtos/new" class="btn btn-primary" type="button">
-						Novo produto
+						Cadastrar produto
 					</a>
 				</span>
 				<input class="form-control" placeholder="filtrar pelo título do produto" ng-model="filtro" ng-model-options="{ debounce: 500 }">
 			</form>
+			
 		</div>
-	</div>
-	
-	<form novalidate name="formulario" class="row"></form>
-	<div class="row">
+		
 		<div class="col-md-12">
 			<div class="table-responsive">
 				<table class="table">
@@ -57,22 +50,24 @@
 						<tr ng-repeat="produto in produtos | filter: filtro" nome="{{produto.nome}}">
 							<td class="col-md-1">{{produto.codigo}}</td>
 							<td class="col-md-4">{{produto.nome}}</td>
-							<td class="col-md-6">{{produto.observacoes}}</td>
-							<td class="col-md-4 numeric-cell">{{produto.valor}}</td>
+							<td class="col-md-4">{{produto.observacoes}}</td>
+							<td class="col-md-2 numeric-cell">{{produto.valor}}</td>
 							<td align="center">
-									<meu-botao-comprar nome="Comprar" acao="comprar(produto)">Comprar</meu-botao-comprar>
-								</td>
+								<meu-botao-comprar nome="Add" acao="comprar(produto)">Add</meu-botao-comprar>
+							</td>
 							<td align="center">
 								<a class="btn btn-primary btn-block" href="/produtos/edit/{{produto.codigo}}">
 									Editar
 								</a></td>
 								<td align="center">
-									<meu-botao-perigo nome="Remover" acao="remover(produto)">Remover</meu-botao-perigo>
+									<meu-botao-remover nome="Remover" acao="remover(produto)">Remover</meu-botao-remover>
 								</td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
 			</div>
+			<footer>
+				<p>&copy; Hypermercado 2017</p>
+			</footer>
 		</div>
-	</form>

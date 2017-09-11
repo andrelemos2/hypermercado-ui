@@ -1,4 +1,4 @@
-angular.module('meusServicos', ['ngResource'])
+angular.module('produtoServicos', ['ngResource'])
 	.factory('recursoProduto', function ($resource) {
 
 		return $resource('http://localhost:8080/v1/produtos/:codigo', null, {
