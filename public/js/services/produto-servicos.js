@@ -1,7 +1,6 @@
 angular.module('produtoServicos', ['ngResource'])
 	.factory('recursoProduto', function ($resource) {
-
-		return $resource('http://localhost:8080/v1/produtos/:codigo', null, {
+		return $resource('https://hypermercado-api.herokuapp.com/v1/produtos/:codigo', null, {
 			'update': {
 				method: 'PUT'
 			}

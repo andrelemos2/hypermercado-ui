@@ -1,7 +1,7 @@
 angular.module('carrinhoServicos', ['ngResource'])
 .factory('recursoCarrinho', function ($resource) {
     
-    return $resource('http://localhost:8080/v1/produtos/carrinho/:codigo', null, {
+    return $resource('https://hypermercado-api.herokuapp.com/v1/produtos/carrinho/:codigo', null, {
     'update': {
         method: 'PUT'
     }
