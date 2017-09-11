@@ -1,0 +1,78 @@
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+			aria-controls="navbar">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="#">Hypermercado UI</a>
+	</div>
+	<div id="navbar" class="navbar-collapse collapse">
+		<ul class="nav navbar-nav navbar-right">
+				<!-- <meu-carrinho></meu-carrinho> -->
+			<li><a href="/produtos/carrinho" rel="nofollow">Carrinho {{carrinho.quantidade}} </a></li>
+		</ul>
+	</div>
+</div>
+</nav>
+
+<p ng-show="mensagem.length" class="alert alert-info">
+	{{mensagem}}
+</p>
+
+<div class="row">
+	<div class="col-md-12">
+		<form>
+			<div class="input-group">
+				<span class="input-group-btn">
+					<a href="/produtos/new" class="btn btn-primary" type="button">
+						Novo produto
+					</a>
+				</span>
+				<input class="form-control" placeholder="filtrar pelo título do produto" ng-model="filtro" ng-model-options="{ debounce: 500 }">
+			</form>
+		</div>
+	</div>
+	
+	<form novalidate name="formulario" class="row"></form>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="table-responsive">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Nome</th>
+							<th>Descricao</th>
+							<th>Valor</th>
+							<th align="center">Comprar</th>
+							<th align="center">Editar</th>
+							<th align="center">Remover</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="produto in produtos | filter: filtro" nome="{{produto.nome}}">
+							<td class="col-md-1">{{produto.codigo}}</td>
+							<td class="col-md-4">{{produto.nome}}</td>
+							<td class="col-md-6">{{produto.observacoes}}</td>
+							<td class="col-md-4 numeric-cell">{{produto.valor}}</td>
+							<td align="center">
+									<meu-botao-comprar nome="Comprar" acao="comprar(produto)">Comprar</meu-botao-comprar>
+								</td>
+							<td align="center">
+								<a class="btn btn-primary btn-block" href="/produtos/edit/{{produto.codigo}}">
+									Editar
+								</a></td>
+								<td align="center">
+									<meu-botao-perigo nome="Remover" acao="remover(produto)">Remover</meu-botao-perigo>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</form>

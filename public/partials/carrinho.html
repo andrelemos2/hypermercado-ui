@@ -1,0 +1,19 @@
+<h3>Itens do seu carrinho de compras</h3>
+
+<p ng-show="mensagem.length" class="alert alert-info">{{mensagem}}</p>
+
+<tr ng-repeat="produto in produtos">
+    <td class="item-title">{{produto.nome}}</td>
+    <td class="numeric-cell">R$ {{produto.preco}}</td>
+    <td class="quantity-input-cell">
+        <input type="number" min="0" readonly="readonly" id="updates_4082273665" name="updates[4082273665]" value=1 />
+    </td>
+    <td class="numeric-cell">{{produto.getTotal(produto)}}</td>
+    <td class="remove-item">
+        <a href="/cart/change?218748921802387812&quantity=0">
+            excluir
+        </a>
+    </td>
+</tr>
+<a href="/" class="btn btn-primary">Voltar</a>
+<!-- <form novalidate name="formulario" class="
